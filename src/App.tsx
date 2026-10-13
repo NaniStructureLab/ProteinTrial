@@ -455,8 +455,9 @@ export default function App() {
             <span aria-hidden="true">·</span>
             <span>Cross-Database Protein Investigator</span>
           </div>
-          <div className="text-slate-400">
-            Live biological data integrated from UniProtKB, RCSB PDB & AlphaFold DB
+          <div className="text-slate-700 font-medium">
+            Designed By <span className="font-semibold text-[#0B57D0]">Nani P</span>{' '}
+            <span className="text-slate-500 font-normal">(MSc Bioinformatics)</span>
           </div>
         </div>
       </footer>
