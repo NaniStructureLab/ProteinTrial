@@ -1,0 +1,8 @@
+{
+  "name": "ProteinTrail",
+  "description": "An interactive bioinformatics platform to search, compare, and visualize protein data from integrated biological databases.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
