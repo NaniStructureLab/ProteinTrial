@@ -200,12 +200,14 @@ export async function fetchStructuresForProtein(
     );
     if (afRes.ok) {
       const afData = await afRes.json();
-      if (Array.isArray(afData) && afData.length > 0 && afData[0]?.cifUrl) {
-        const afModel = afData[0];
+      const afItem = Array.isArray(afData) ? afData[0] : afData;
+      if (afItem && afItem.cifUrl) {
+        const afModel = afItem;
         const afId = String(afModel.entryId || `AF-${cleanAcc}-F1`);
+        const safeCifUrl = String(afModel.cifUrl).replace(/^http:\/\//i, 'https://');
         structures.push({
           pdbId: afId,
-          title: `AlphaFold Monomer v6 Predicted Structure for ${afModel.uniprotDescription || cleanAcc}`,
+          title: `AlphaFold Monomer Predicted Structure for ${afModel.uniprotDescription || cleanAcc}`,
           experimentalMethod: 'Predicted by AlphaFold (Computational Model — Not Experimental)',
           isPredictedModel: true,
           resolutionAngstrom: null,
@@ -220,7 +222,7 @@ export async function fetchStructuresForProtein(
           pubMedId: 34265844,
           sourceUrl: `https://alphafold.ebi.ac.uk/entry/${encodeURIComponent(cleanAcc)}`,
           sourceType: 'AlphaFold DB',
-          cifUrl: String(afModel.cifUrl),
+          cifUrl: safeCifUrl,
         });
       }
     }
